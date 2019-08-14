@@ -1,6 +1,6 @@
 {
   "name": "graphql-mockfiles-express-middleware",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A GraphQL mockserver based on files and a typeDefinition",
   "main": "graphql-mockfiles-middleware.js",
   "repository": {
