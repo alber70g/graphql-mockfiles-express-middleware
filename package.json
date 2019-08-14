@@ -1,0 +1,20 @@
+{
+  "name": "graphql-mockfiles-express-middleware",
+  "version": "0.0.1",
+  "description": "A GraphQL mockserver based on files and a typeDefinition",
+  "main": "graphql-mockfiles-middleware.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["GraphQl", "mock", "mockserver", "mockfiles", "express"],
+  "author": "Albert Groothedde <alber70g@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "deepmerge": "^4.0.0",
+    "fs-extra": "^8.1.0",
+    "graphql": "^14.4.2",
+    "graphql-query-path": "^1.1.2",
+    "graphql-tools": "^4.0.5",
+    "object-path": "^0.11.4"
+  }
+}
