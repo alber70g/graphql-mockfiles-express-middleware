@@ -3,6 +3,10 @@
   "version": "0.0.2",
   "description": "A GraphQL mockserver based on files and a typeDefinition",
   "main": "graphql-mockfiles-middleware.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/alber70g/graphql-mockfiles-express-middleware"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

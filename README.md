@@ -9,6 +9,7 @@ A GraphQL mockserver based on files and a typeDefinition
 - [How does it work](#how-does-it-work)
 - [Further work and new features](#further-work-and-new-features)
 - [Changelog](#changelog)
+  - [0.0.3](#003)
   - [0.0.2](#002)
   - [0.0.1](#001)
 
@@ -170,10 +171,10 @@ paths. E.g. the query above creates the following paths (using
 
 ```json
 [
-  '/posts/'
-  '/posts/title'
-  '/posts/author/'
-  '/posts/author/name'
+  "/posts/",
+  "/posts/title",
+  "/posts/author/",
+  "/posts/author/name"
 ]
 ```
 
@@ -191,9 +192,13 @@ and the
 
 # Further work and new features
 
-- [] make the mockfiles-middleware work for Mutations
+- [ ] make the mockfiles-middleware work for Mutations
 
 # Changelog
+
+## 0.0.3
+
+- Update README.md
 
 ## 0.0.2
 
