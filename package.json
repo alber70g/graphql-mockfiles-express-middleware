@@ -19,8 +19,7 @@
     "deepmerge": "^4.0.0",
     "graphql": "^14.4.2",
     "graphql-query-path": "^1.1.2",
-    "graphql-tools": "^4.0.5",
-    "object-path": "^0.11.4"
+    "graphql-tools": "^4.0.5"
   },
   "devDependencies": {
     "body-parser": "^1.19.0",

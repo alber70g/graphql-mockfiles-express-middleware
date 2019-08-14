@@ -2,6 +2,16 @@
 
 A GraphQL mockserver based on files and a typeDefinition
 
+- [GraphQL MockFiles Server](#graphql-mockfiles-server)
+  - [Getting started](#getting-started)
+    - [Prepare your mockfiles](#prepare-your-mockfiles)
+    - [Setup the express server](#setup-the-express-server)
+- [How does it work](#how-does-it-work)
+- [Further work and new features](#further-work-and-new-features)
+- [Changelog](#changelog)
+  - [0.0.2](#002)
+  - [0.0.1](#001)
+
 ## Getting started
 
 This is a mockserver that can be used as
@@ -38,7 +48,11 @@ type Author {
 }
 ```
 
-So this typedef would result in the following directory structure:
+So this typedef would result in the following directory structure.
+
+> take notion of the `author` in the second item in the array. The
+> mockfiles-middleware will add `author`-prop `"name": "Albert"` to the first
+> item, and leave `author`-prop `"name": "John Doe"` in place
 
 ```
 mocks/posts/ok.json
@@ -51,7 +65,10 @@ mocks/posts/ok.json
   {
     "title": "Another post",
     "content": "Suspendisse lectus ligula, pharetra [...]",
-    "dateCreated": "2019-08-11T12:21:03.23Z"
+    "dateCreated": "2019-08-11T12:21:03.23Z",
+    "author": {
+      "name": "John Doe"
+    }
   }
 ]
 ```
@@ -62,6 +79,8 @@ mocks/posts/author/ok.json
   "name": "Albert"
 }
 ```
+
+### Setup the express server
 
 Now setup the express server to serve the mockfiles. Take your typeDefs and the
 path and pass it to the mock-middleware:
@@ -143,6 +162,43 @@ Now execute a query by posting to the server using your
 
 # How does it work
 
-The middleware requires you to give typeDefs and the path to the mock directory.
-Then each request it basically generates a new middleware based on the response
-of the paths of your separate
+The middleware requires you to give `typeDefs` and the `path` to the mock
+directory. Then each request it basically generates a new middleware based on
+the response of the paths of your separate queries. Each query creates a set of
+paths. E.g. the query above creates the following paths (using
+`graphql-query-path`)
+
+```json
+[
+  '/posts/'
+  '/posts/title'
+  '/posts/author/'
+  '/posts/author/name'
+]
+```
+
+Technically _each of these paths_ can be represented by an `ok.json` in the
+directory structure. Earlier paths are overriding later paths. So if
+`/posts/ok.json` already returns a complete object representing what's needed in
+the query, it'll not get overriden from _sub-paths_.
+
+This allows for powerful features like setting `author`'s specifically in a
+`Post` in `/posts/ok.json` or generally in `/posts/author/ok.json`. Have a look
+at the differences in the
+[posts-mocks in ./graphql-mocks/me/posts/ok.json](./graphql-mocks/me/posts/ok.json)
+and the
+[author-mocks in ./graphql-mocks/me/posts/author/ok.json](./graphql-mocks/me/posts/author/ok.json)
+
+# Further work and new features
+
+- [] make the mockfiles-middleware work for Mutations
+
+# Changelog
+
+## 0.0.2
+
+- Fixed an issue where values that should be in arrays weren't put in array's
+
+## 0.0.1
+
+- Initial version

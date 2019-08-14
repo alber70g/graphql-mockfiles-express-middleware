@@ -1,12 +1,10 @@
-#!/usr/bin/env node
-
 const fs = require('fs-extra');
 const path = require('path');
 const { parse, graphql } = require('graphql');
 const { makeExecutableSchema } = require('graphql-tools');
 const { getPathsFromAST } = require('graphql-query-path');
 const deepmerge = require('deepmerge');
-const objectPath = require('object-path');
+const { setProps } = require('./setProps');
 
 /**
  * Returns a "getMocks(gqlQuery)" function that returns mocks from the mockdir
@@ -38,14 +36,9 @@ const getMocksFactory = (mockDir) => async (query) => {
           .readJson(mockPath)
           .catch((err) => console.error(err));
 
-        objectPath.set(
-          res,
-          mock
-            .split('/')
-            .filter((x) => x.length)
-            .join('.'),
-          mockFile
-        );
+        const pathParts = mock.split('/').filter((x) => x.length);
+
+        setProps(pathParts, res, mockFile);
       }
     }
 

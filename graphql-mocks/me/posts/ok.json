@@ -7,6 +7,9 @@
   {
     "title": "Another post",
     "content": "Suspendisse lectus ligula, pharetra eu dui quis, porttitor imperdiet est. Etiam finibus orci aliquet justo maximus ultricies. Ut felis dolor, tempor vitae rutrum ut, sollicitudin sit amet mi. Duis viverra varius finibus. Praesent consequat risus eu pellentesque sodales. Ut at nibh volutpat, ornare mauris non, porttitor ipsum. Suspendisse egestas, massa eu porta fermentum, diam orci ultricies dolor, porttitor euismod tellus ex in sapien. Cras augue massa, varius a eleifend vel, lacinia id orci. Donec rhoncus ante at arcu vehicula, eget molestie velit iaculis. Morbi non maximus sapien. Phasellus accumsan eu magna ac facilisis.",
-    "dateCreated": "2019-08-11T12:21:03.23Z"
+    "dateCreated": "2019-08-11T12:21:03.23Z",
+    "author": {
+      "name": "John Doe"
+    }
   }
 ]
