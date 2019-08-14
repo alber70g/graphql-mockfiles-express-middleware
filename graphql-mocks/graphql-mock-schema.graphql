@@ -11,4 +11,9 @@ type Post {
   title: String
   content: String
   dateCreated: String
+  author: Author
+}
+
+type Author {
+  name: String
 }
